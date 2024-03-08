@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="icon" href="./res/logo.jpeg" type="image/x-icon">
+    <style>
+        .tab-content {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-tabs {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <ul class="nav nav-tabs" id="myTabs">
+            <li class="nav-item">
+                <a class="nav-link active" id="user-info-tab" data-toggle="tab" href="#user-info">User Information</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="transport-tab" data-toggle="tab" href="#transport">Transport Mode</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="energy-sources-tab" data-toggle="tab" href="#energy-sources">Energy Sources</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="waste-management-tab" data-toggle="tab" href="#waste-management">Waste
+                    Management</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="the-sources-tab" data-toggle="tab" href="#the-sources">The Sources</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="fashion-tab" data-toggle="tab" href="#fashion">Textile and Fashion Choices</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="diet-tab" data-toggle="tab" href="#diet">Diet and Food Choices</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="user-info">
+                <h4>Personal Information</h4>
+                <form id="user-info-form">
+                    <label for="username">Username:</label> <br>
+                    <input type="text" id="username"> <br>
+                    <label for="email">Email</label><br>
+                    <input type="email" id="email"> <br>
+                    <label for="phone">Phone</label> <br>
+                    <input type="tel" name="" id="phone"> <br>
+                    <label for="region">Region</label> <br>
+                    <select name="region" id="region">
+                        <option value="North America">North America</option>
+                        <option value="South America">South America</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Middle East">Middle East</option>
+                        <option value="South East Asia">South East Asia</option>
+                        <option value="Asia">Greater Asia</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Arctic">Arctic</option>
+                    </select> <br>
+                    <label for="address">Home address</label> <br>
+                    <input type="text" id="address"> <br>
+                    <br>
+                    <button type="button" class="button-22" onclick="nextTab('user-info', 'transport')">Next</button>
+                </form>
+            </div>
+
+            <div class="tab-pane fade" id="transport">
+                <h4>Transport Mode</h4>
+                <form id="transport-form">
+                    <h6>Choose all that apply</h6>
+                    <input type="checkbox" id="public"> <label for="public">Public transport</label> 
+                    <input type="checkbox" name="animals" id="animals"> <label for="animals">Animal transport</label>
+                    
+                    <input type="checkbox" name="bicycle" id="bicycle"> <label for="bicycle">Bicycles</label> 
+                    <input type="checkbox" name="motorbike" id="motorbike"> <label for="motorbike">Motorcycles</label> 
+                    <input type="checkbox" name="cars" id="cars"> <label for="cars">Motor cars</label> 
+                    <input type="checkbox" name="airplanes" id="airplanes"> <label for="airplanes">Air transport</label>
+                    <input type="checkbox" name="walking" id="walking"> <label for="walking">Walking</label> 
+                    <div class="buttons">
+                    <button type="button" class="button-22"
+                        onclick="prevTab('transport', 'user-info')">Previous</button>
+                    <button type="button" class="button-22"
+                        onclick="nextTab('transport', 'energy-sources')">Next</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane fade" id="energy-sources">
+                <h4>Energy Sources</h4>
+                <form id="energy-sources-form">
+                    <label for="electricity">Range of electricity bill monthly</label> <br>
+                    <input type="text" id="electricity" placeholder="6000"> <br>
+                    <label for="water">Range of water bill monthly</label> <br>
+                    <input type="text" id="water" placeholder="6000"> <br>
+                    <label for="heating">Range of heating bill monthly</label> <br>
+                    <input type="text" id="heating" placeholder="0"> <br>
+                    <label for="cooling">Range of cooling bill monthly</label> <br>
+                    <input type="text" id="cooling" placeholder="6000"> <br>
+                    <div class="buttons">
+                    <button type="button" class="button-22"
+                        onclick="prevTab('energy-sources', 'transport')">Previous</button>
+                    <button type="button" class="button-22"
+                        onclick="nextTab('energy-sources', 'waste-management')">Next</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane fade" id="waste-management">
+                <h4>Waste Management</h4>
+                <form id="waste-management-form">
+                    <h6>How do you dispose of waste</h6>
+                    <label for="recycling">Do you practice recycling?</label> <br>
+                    <input type="checkbox" id="recycling"> <br>
+                    <label for="composting">Do you practice composting?</label> <br>
+                    <input type="checkbox" id="composting"> <br>
+                    <div class="buttons">
+                    <button type="button" class="button-22"
+                        onclick="prevTab('waste-management', 'energy-sources')">Previous</button>
+                    <button type="button" class="button-22"
+                        onclick="nextTab('waste-management', 'the-sources')">Next</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane fade" id="the-sources">
+                <h4>Energy Sources</h4>
+                <form id="energy-sources-form">
+                    <h6>Choose all that apply</h6>
+                    <input type="checkbox" id="hydro">
+                    <label for="renewable">Hydroelectric</label>
+                    <input type="checkbox" id="fossils">
+                    <label for="solar">Fossil fuels</label>
+                    <input type="checkbox" id="tidal">
+                    <label for="solar">Tidal</label>
+                    <input type="checkbox" id="nuclear">
+                    <label for="solar">Nuclear power</label> <br>
+                    <input type="checkbox" id="human">
+                    <label for="solar">Human powered generators</label>
+                    <input type="checkbox" id="piezo">
+                    <label for="solar">Piezo electricity</label> <br>
+                    <input type="checkbox" id="thermo">
+                    <label for="solar">Thermoelectricity</label>
+                    <input type="checkbox" id="fuelcells">
+                    <label for="solar">Fuel cells</label> 
+                    <input type="checkbox" id="hybrid">
+                    <label for="solar">Hybrid systems</label> <br>
+                    <input type="checkbox" id="microgrids">
+                    <label for="solar">Microgrids and distributed generation</label> <br>
+                    <div class="buttons">
+                    <button type="button" class="button-22"
+                        onclick="prevTab('the-sources', 'waste-management')">Previous</button>
+                    <button type="button" class="button-22"
+                        onclick="nextTab('the-sources', 'fashion')">Next</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane fade" id="fashion">
+                <h4>Textile and Fashion Choices</h4>
+                <form id="fashion-form">
+                    <h6>Choose all that apply</h6>
+                    <input type="checkbox" name="plastic-bags" id="plastic-bags"> <label for="plastic-bags">Plastic
+                        bags</label> <br>
+                    <input type="checkbox" name="woven-bags" id="woven-bags"> <label for="woven-bags">Woven bags</label>
+                    <br>
+                    <input type="checkbox" name="fast-fashion" id="fast-fashion"> <label for="fast-fashion">Fast
+                        fashion</label> <br>
+                    <input type="checkbox" name="durable-clothes" id="durable-clothes"> <label
+                        for="durable-clothes">Durable fashion</label> <br>
+                    <div class="buttons">
+                    <button type="button" class="button-22"
+                        onclick="prevTab('fashion', 'the-sources')">Previous</button>
+                    <button type="button" class="button-22" onclick="nextTab('fashion', 'diet')">Next</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane fade" id="diet">
+                <h4>Diet and Food Choices</h4>
+                <form id="diet-form">
+                    <h6>Choose all that apply</h6>
+                    <input type="checkbox" name="meat" id="meat"> <label for="meat">Meat/Beef</label> <br>
+                    <input type="checkbox" name="birds" id="birds"> <label for="birds">Birds</label> <br>
+                    <input type="checkbox" name="vegetables" id="vegetables"> <label for="vegetables">Vegetables</label>
+                    <br>
+                    <input type="checkbox" name="fast-food" id="fast-food"> <label for="fast-food">Fast food</label>
+                    <br>
+                    <h6>Where do you get your food</h6>
+                    <input type="checkbox" name="farm" id="farm"> <label for="farm">Your own farm</label> <br>
+                    <input type="checkbox" name="local" id="local"> <label for="local">Locally produced</label> <br>
+                    <input type="checkbox" name="imported" id="imported"> <label for="imported">Imported
+                        products</label> <br>
+
+                    <div class="buttons">
+                    <button type="button" class="button-22" onclick="prevTab('diet', 'fashion')">Previous</button>
+                    <button type="button" class="button-22" onclick="saveData()">Finish</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        function nextTab(currentTabId, nextTabId) {
+            $('#myTabs a[href="#' + nextTabId + '"]').tab('show');
+        }
+
+        function prevTab(currentTabId, prevTabId) {
+            $('#myTabs a[href="#' + prevTabId + '"]').tab('show');
+        }
+
+        function saveData() {
+            alert('Data saved successfully!');
+            window.location.href = 'home.html';
+        }
+    </script>
+</body>
+
+</html>

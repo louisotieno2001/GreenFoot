@@ -1,0 +1,19 @@
+{
+  "name": "greenfoot",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "openai": "^4.28.0",
+    "path": "^0.12.7",
+    "pg-promise": "^11.5.4"
+  }
+}
