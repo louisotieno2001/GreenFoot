@@ -149,6 +149,23 @@ async function saveChatInteraction(userQuery, chatGPTResponse) {
     }
 }
 
+// Route to fetch user data
+app.get('/renderData', async (req, res) => {
+    try {
+        // Query to fetch user data from the database
+        const userDataQuery = 'SELECT * FROM users'; // Customize this query as per your database schema
+
+        // Execute the query
+        const userData = await db.any(userDataQuery);
+        // console.log(userData);
+        // Send the fetched user data as JSON response
+        res.json(userData);
+    } catch (error) {
+        console.error('Error fetching user data:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });

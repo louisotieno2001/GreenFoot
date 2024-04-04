@@ -27,6 +27,12 @@
             display: none;
         }
 
+        #profile {
+            overflow-y: auto;
+            max-height: calc(100vh - 2px);
+            /* Adjust the max-height as needed */
+        }
+
         @media (max-width: 1068px) {
             #menu-icon {
                 display: block;
@@ -49,6 +55,10 @@
                 /* Center vertically */
                 padding: 10px;
                 /* Add padding for better appearance */
+            }
+
+            #mic-gif{
+                display: none;
             }
         }
     </style>
@@ -246,6 +256,146 @@
                 isSideBarOpen = false;
             }
         });
+
+        // Fetch user data from the database
+        async function fetchUserData() {
+            try {
+                const response = await fetch('/renderData'); // Assuming this is the correct endpoint
+                const userData = await response.json();
+                console.log(userData);
+                renderUserData(userData);
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        }
+
+        function renderUserData(userData) {
+            const profileContent = document.getElementById('profile'); // Get the profile tab content
+
+            // Clear existing content
+            // profileContent.innerHTML = '';
+
+            userData.forEach(user => {
+                // Create a card for personal information
+                const personalInfoCard = document.createElement('div');
+                personalInfoCard.classList.add('card');
+                personalInfoCard.style.backgroundColor = '#212121'
+                personalInfoCard.style.margin = '20px'
+                personalInfoCard.style.borderRadius = '8px'
+                personalInfoCard.style.width = '270px'
+                personalInfoCard.style.padding = '2em'
+                personalInfoCard.innerHTML = `
+            <h2>${user.username}</h2>
+            <p>Email: ${user.email}</p>
+            <p>Phone: ${user.phone}</p>
+            <p>Region: ${user.region}</p>
+            <p>Township: ${user.township}</p>
+        `;
+                profileContent.appendChild(personalInfoCard);
+
+                // Create a card for transport choices
+                const transportCard = document.createElement('div');
+                transportCard.classList.add('card');
+                transportCard.style.backgroundColor = '#212121'
+                transportCard.style.margin = '20px'
+                transportCard.style.borderRadius = '8px'
+                transportCard.style.width = '270px'
+                transportCard.style.padding = '2em'
+                const transportChoices = Object.keys(user.transport).filter(key => user.transport[key]);
+                transportCard.innerHTML = `
+            <h2>Transport Choices</h2>
+            <p>${transportChoices.join(', ')}</p>
+        `;
+                profileContent.appendChild(transportCard);
+
+                // Create a card for energy bills
+                const energyCard = document.createElement('div');
+                energyCard.style.backgroundColor = '#212121'
+                energyCard.style.margin = '20px'
+                energyCard.style.borderRadius = '8px'
+                energyCard.style.width = '270px'
+                energyCard.style.padding = '2em'
+                energyCard.classList.add('card');
+                energyCard.innerHTML = `
+            <h2>Energy Bills</h2>
+            <p>Water: ${user.energy.water}</p>
+            <p>Cooling: ${user.energy.cooling}</p>
+            <p>Heating: ${user.energy.heating}</p>
+            <p>Electricity: ${user.energy.electricity}</p>
+        `;
+                profileContent.appendChild(energyCard);
+
+                // Create a card for waste management
+                const wasteManagementCard = document.createElement('div');
+                wasteManagementCard.classList.add('card');
+                wasteManagementCard.style.backgroundColor = '#212121'
+                wasteManagementCard.style.margin = '20px'
+                wasteManagementCard.style.borderRadius = '8px'
+                wasteManagementCard.style.width = '270px'
+                wasteManagementCard.style.padding = '2em'
+                const wasteManagementChoices = Object.keys(user.waste_management).filter(key => user.waste_management[key]);
+                wasteManagementCard.innerHTML = `
+            <h2>Waste Management Choices</h2>
+            <p>${wasteManagementChoices.join(', ')}</p>
+        `;
+                profileContent.appendChild(wasteManagementCard);
+
+                // Create a card for energy sources
+                const energySourcesCard = document.createElement('div');
+                energySourcesCard.classList.add('card');
+                energySourcesCard.style.backgroundColor = '#212121'
+                energySourcesCard.style.margin = '20px'
+                energySourcesCard.style.borderRadius = '8px'
+                energySourcesCard.style.width = '270px'
+                energySourcesCard.style.padding = '2em'
+                const energySources = Object.keys(user.energy_sources).filter(key => user.energy_sources[key]);
+                energySourcesCard.innerHTML = `
+            <h2>Energy Sources</h2>
+            <p>${energySources.join(', ')}</p>
+        `;
+                profileContent.appendChild(energySourcesCard);
+
+                // Create a card for fashion choices
+                const fashionCard = document.createElement('div');
+                fashionCard.classList.add('card');
+                fashionCard.style.backgroundColor = '#212121'
+                fashionCard.style.margin = '20px'
+                fashionCard.style.borderRadius = '8px'
+                fashionCard.style.width = '270px'
+                fashionCard.style.padding = '2em'
+                const fashionChoices = Object.keys(user.fashion).filter(key => user.fashion[key]);
+                fashionCard.innerHTML = `
+            <h2>Fashion Choices</h2>
+            <p>${fashionChoices.join(', ')}</p>
+        `;
+                profileContent.appendChild(fashionCard);
+
+                // Create a card for diet choices
+                const dietCard = document.createElement('div');
+                dietCard.classList.add('card');
+                dietCard.style.backgroundColor = '#212121'
+                dietCard.style.margin = '20px'
+                dietCard.style.borderRadius = '8px'
+                dietCard.style.width = '270px'
+                dietCard.style.padding = '2em'
+                const dietChoices = Object.keys(user.diet).filter(key => user.diet[key]);
+                dietCard.innerHTML = `
+            <h2>Diet Choices</h2>
+            <p>${dietChoices.join(', ')}</p>
+        `;
+                profileContent.appendChild(dietCard);
+            });
+        }
+
+
+
+        // Call fetchUserData() when the profile tab is clicked
+        // document.getElementById('profile').addEventListener('click', fetchUserData);
+
+        // Initially fetch user data when the page loads
+        window.onload = fetchUserData;
+
+
 
 
     </script>
