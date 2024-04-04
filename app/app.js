@@ -27,9 +27,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Endpoint to interact with ChatGPT
 app.post('/completions', async (req, res) => {
     const apiUrl = 'https://api.openai.com/v1/engines/davinci/completions'
-    
+
     function ChatCompletion() {
-        
+
     }
 
     try {
@@ -49,6 +49,57 @@ app.post('/completions', async (req, res) => {
     }
 });
 
+// Route to handle user registration
+app.post('/register', async (req, res) => {
+    const userData = req.body;
+
+    try {
+        // Insert user data into the database
+        const query = `
+            INSERT INTO users (username, password, email, phone, region, township, transport, energy, waste_management, energy_sources, fashion, diet)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+        `;
+        const values = [
+            userData.username,
+            userData.password,
+            userData.email,
+            userData.phone,
+            userData.region,
+            userData.township,
+            JSON.stringify(userData.transport),
+            JSON.stringify(userData.energy),
+            JSON.stringify(userData.wasteManagement),
+            JSON.stringify(userData.energySources),
+            JSON.stringify(userData.fashion),
+            JSON.stringify(userData.diet),
+        ];
+
+        await db.none(query, values); // Execute the query using 'none' method
+
+        res.status(201).send('User registered successfully');
+    } catch (error) {
+        console.error('Error registering user:', error);
+        res.status(500).send('Internal server error');
+    }
+});
+
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        // Query the database to verify the credentials
+        const user = await db.oneOrNone('SELECT * FROM users WHERE username = $1 AND password = $2', [username, password]);
+
+        if (user) {
+            res.status(200).json({ message: 'Login successful' });
+        } else {
+            res.status(401).json({ message: 'Invalid username or password' });
+        }
+    } catch (error) {
+        console.error('Error during login:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
 
 app.post('/api/chatgpt', async (req, res) => {
     const { query } = req.body;

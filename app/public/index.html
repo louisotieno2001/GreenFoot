@@ -22,6 +22,10 @@
         .nav-tabs {
             display: none;
         }
+
+        a {
+            color: rgb(17, 189, 60);
+        }
     </style>
 </head>
 
@@ -57,14 +61,15 @@
             <div class="tab-pane fade show active" id="user-info">
                 <h4>Personal Information</h4>
                 <form id="user-info-form">
-                    <label for="username">Username:</label> <br>
-                    <input type="text" id="username"> <br>
-                    <label for="email">Email</label><br>
-                    <input type="email" id="email"> <br>
-                    <label for="phone">Phone</label> <br>
-                    <input type="tel" name="" id="phone"> <br>
-                    <label for="region">Region</label> <br>
+                    <input type="text" id="username" placeholder="username"> <br>
+                    <input type="password" name="password" id="password" placeholder="password"> <br>
+                    <input type="email" id="email" placeholder="email address"> <br>
+                    <input type="tel" name="" id="phone" placeholder="phone number"> <br>
                     <select name="region" id="region">
+                        <option value="Southern Africa">Southern Africa</option>
+                        <option value="West Africa">West Africa</option>
+                        <option value="East Africa">East Africa</option>
+                        <option value="North Africa">North Africa</option>
                         <option value="North America">North America</option>
                         <option value="South America">South America</option>
                         <option value="Europe">Europe</option>
@@ -74,10 +79,10 @@
                         <option value="Australia">Australia</option>
                         <option value="Arctic">Arctic</option>
                     </select> <br>
-                    <label for="address">Home address</label> <br>
-                    <input type="text" id="address"> <br>
+                    <input type="text" id="township" placeholder="township"> <br>
                     <br>
                     <button type="button" class="button-22" onclick="nextTab('user-info', 'transport')">Next</button>
+                    <p>Already have an account? <a href="login.html">Login</a></p>
                 </form>
             </div>
 
@@ -85,25 +90,24 @@
                 <h4>Transport Mode</h4>
                 <form id="transport-form">
                     <h6>Choose all that apply</h6>
-                    <input type="checkbox" id="public"> <label for="public">Public transport</label> 
+                    <input type="checkbox" id="public"> <label for="public">Public transport</label>
                     <input type="checkbox" name="animals" id="animals"> <label for="animals">Animal transport</label>
-                    
-                    <input type="checkbox" name="bicycle" id="bicycle"> <label for="bicycle">Bicycles</label> 
-                    <input type="checkbox" name="motorbike" id="motorbike"> <label for="motorbike">Motorcycles</label> 
-                    <input type="checkbox" name="cars" id="cars"> <label for="cars">Motor cars</label> 
+                    <input type="checkbox" name="bicycle" id="bicycle"> <label for="bicycle">Bicycles</label>
+                    <input type="checkbox" name="motorbike" id="motorbike"> <label for="motorbike">Motorcycles</label>
+                    <input type="checkbox" name="cars" id="cars"> <label for="cars">Motor cars</label>
                     <input type="checkbox" name="airplanes" id="airplanes"> <label for="airplanes">Air transport</label>
-                    <input type="checkbox" name="walking" id="walking"> <label for="walking">Walking</label> 
+                    <input type="checkbox" name="walking" id="walking"> <label for="walking">Walking</label>
                     <div class="buttons">
-                    <button type="button" class="button-22"
-                        onclick="prevTab('transport', 'user-info')">Previous</button>
-                    <button type="button" class="button-22"
-                        onclick="nextTab('transport', 'energy-sources')">Next</button>
+                        <button type="button" class="button-22"
+                            onclick="prevTab('transport', 'user-info')">Previous</button>
+                        <button type="button" class="button-22"
+                            onclick="nextTab('transport', 'energy-sources')">Next</button>
                     </div>
                 </form>
             </div>
 
             <div class="tab-pane fade" id="energy-sources">
-                <h4>Energy Sources</h4>
+                <h4>Energy Consumption</h4>
                 <form id="energy-sources-form">
                     <label for="electricity">Range of electricity bill monthly</label> <br>
                     <input type="text" id="electricity" placeholder="6000"> <br>
@@ -114,10 +118,10 @@
                     <label for="cooling">Range of cooling bill monthly</label> <br>
                     <input type="text" id="cooling" placeholder="6000"> <br>
                     <div class="buttons">
-                    <button type="button" class="button-22"
-                        onclick="prevTab('energy-sources', 'transport')">Previous</button>
-                    <button type="button" class="button-22"
-                        onclick="nextTab('energy-sources', 'waste-management')">Next</button>
+                        <button type="button" class="button-22"
+                            onclick="prevTab('energy-sources', 'transport')">Previous</button>
+                        <button type="button" class="button-22"
+                            onclick="nextTab('energy-sources', 'waste-management')">Next</button>
                     </div>
                 </form>
             </div>
@@ -127,14 +131,16 @@
                 <form id="waste-management-form">
                     <h6>How do you dispose of waste</h6>
                     <label for="recycling">Do you practice recycling?</label> <br>
-                    <input type="checkbox" id="recycling"> <br>
+                    <input type="checkbox" id="recycling" value="Recycling"> <br>
                     <label for="composting">Do you practice composting?</label> <br>
-                    <input type="checkbox" id="composting"> <br>
+                    <input type="checkbox" id="composting" value="Composting"> <br>
+                    <label for="municipal">Is your waste handled for you by your municipal?</label> <br>
+                    <input type="checkbox" id="municipal" value="Municipal"> <br>
                     <div class="buttons">
-                    <button type="button" class="button-22"
-                        onclick="prevTab('waste-management', 'energy-sources')">Previous</button>
-                    <button type="button" class="button-22"
-                        onclick="nextTab('waste-management', 'the-sources')">Next</button>
+                        <button type="button" class="button-22"
+                            onclick="prevTab('waste-management', 'energy-sources')">Previous</button>
+                        <button type="button" class="button-22"
+                            onclick="nextTab('waste-management', 'the-sources')">Next</button>
                     </div>
                 </form>
             </div>
@@ -143,31 +149,31 @@
                 <h4>Energy Sources</h4>
                 <form id="energy-sources-form">
                     <h6>Choose all that apply</h6>
-                    <input type="checkbox" id="hydro">
+                    <input type="checkbox" id="hydro" value="Hydro-electric power">
                     <label for="renewable">Hydroelectric</label>
-                    <input type="checkbox" id="fossils">
+                    <input type="checkbox" id="fossils" value="Fossil fuels">
                     <label for="solar">Fossil fuels</label>
-                    <input type="checkbox" id="tidal">
+                    <input type="checkbox" id="tidal" value="Tidal wave energy">
                     <label for="solar">Tidal</label>
-                    <input type="checkbox" id="nuclear">
+                    <input type="checkbox" id="nuclear" value="Nuclear energy">
                     <label for="solar">Nuclear power</label> <br>
-                    <input type="checkbox" id="human">
+                    <input type="checkbox" id="human" value="Human powered generators">
                     <label for="solar">Human powered generators</label>
-                    <input type="checkbox" id="piezo">
+                    <input type="checkbox" id="piezo" value="Piezo electricity">
                     <label for="solar">Piezo electricity</label> <br>
-                    <input type="checkbox" id="thermo">
+                    <input type="checkbox" id="thermo" value="Thermo-electricity">
                     <label for="solar">Thermoelectricity</label>
-                    <input type="checkbox" id="fuelcells">
-                    <label for="solar">Fuel cells</label> 
-                    <input type="checkbox" id="hybrid">
+                    <input type="checkbox" id="fuelcells" value="Fuel-cells">
+                    <label for="solar">Fuel cells</label>
+                    <input type="checkbox" id="hybrid" value="Hybrid sources">
                     <label for="solar">Hybrid systems</label> <br>
-                    <input type="checkbox" id="microgrids">
+                    <input type="checkbox" id="microgrids" value="Microgrids and distributed generators">
                     <label for="solar">Microgrids and distributed generation</label> <br>
                     <div class="buttons">
-                    <button type="button" class="button-22"
-                        onclick="prevTab('the-sources', 'waste-management')">Previous</button>
-                    <button type="button" class="button-22"
-                        onclick="nextTab('the-sources', 'fashion')">Next</button>
+                        <button type="button" class="button-22"
+                            onclick="prevTab('the-sources', 'waste-management')">Previous</button>
+                        <button type="button" class="button-22"
+                            onclick="nextTab('the-sources', 'fashion')">Next</button>
                     </div>
                 </form>
             </div>
@@ -176,18 +182,21 @@
                 <h4>Textile and Fashion Choices</h4>
                 <form id="fashion-form">
                     <h6>Choose all that apply</h6>
-                    <input type="checkbox" name="plastic-bags" id="plastic-bags"> <label for="plastic-bags">Plastic
+                    <input type="checkbox" name="plastic-bags" id="plastic-bags" value="Plastic bags"> <label
+                        for="plastic-bags">Plastic
                         bags</label> <br>
-                    <input type="checkbox" name="woven-bags" id="woven-bags"> <label for="woven-bags">Woven bags</label>
+                    <input type="checkbox" name="woven-bags" id="woven-bags" value="Woven bags"> <label
+                        for="woven-bags">Woven bags</label>
                     <br>
-                    <input type="checkbox" name="fast-fashion" id="fast-fashion"> <label for="fast-fashion">Fast
+                    <input type="checkbox" name="fast-fashion" id="fast-fashion" value="Fast Fashion"> <label
+                        for="fast-fashion">Fast
                         fashion</label> <br>
-                    <input type="checkbox" name="durable-clothes" id="durable-clothes"> <label
+                    <input type="checkbox" name="durable-clothes" id="durable-clothes" value="Durable clothes"> <label
                         for="durable-clothes">Durable fashion</label> <br>
                     <div class="buttons">
-                    <button type="button" class="button-22"
-                        onclick="prevTab('fashion', 'the-sources')">Previous</button>
-                    <button type="button" class="button-22" onclick="nextTab('fashion', 'diet')">Next</button>
+                        <button type="button" class="button-22"
+                            onclick="prevTab('fashion', 'the-sources')">Previous</button>
+                        <button type="button" class="button-22" onclick="nextTab('fashion', 'diet')">Next</button>
                     </div>
                 </form>
             </div>
@@ -196,27 +205,30 @@
                 <h4>Diet and Food Choices</h4>
                 <form id="diet-form">
                     <h6>Choose all that apply</h6>
-                    <input type="checkbox" name="meat" id="meat"> <label for="meat">Meat/Beef</label> <br>
+                    <input type="checkbox" name="meat" id="meat" value="Meat"> <label for="meat">Meat/Beef</label> <br>
                     <input type="checkbox" name="birds" id="birds"> <label for="birds">Birds</label> <br>
-                    <input type="checkbox" name="vegetables" id="vegetables"> <label for="vegetables">Vegetables</label>
+                    <input type="checkbox" name="vegetables" id="vegetables" value="Vegetables"> <label
+                        for="vegetables">Vegetables</label>
                     <br>
                     <input type="checkbox" name="fast-food" id="fast-food"> <label for="fast-food">Fast food</label>
                     <br>
                     <h6>Where do you get your food</h6>
-                    <input type="checkbox" name="farm" id="farm"> <label for="farm">Your own farm</label> <br>
-                    <input type="checkbox" name="local" id="local"> <label for="local">Locally produced</label> <br>
-                    <input type="checkbox" name="imported" id="imported"> <label for="imported">Imported
+                    <input type="checkbox" name="farm" id="farm" value="Farm"> <label for="farm">Your own farm</label>
+                    <br>
+                    <input type="checkbox" name="local" id="local" value="Local produce"> <label for="local">Locally
+                        produced</label> <br>
+                    <input type="checkbox" name="imported" id="imported" value="Imported produce"> <label
+                        for="imported">Imported
                         products</label> <br>
 
                     <div class="buttons">
-                    <button type="button" class="button-22" onclick="prevTab('diet', 'fashion')">Previous</button>
-                    <button type="button" class="button-22" onclick="saveData()">Finish</button>
+                        <button type="button" class="button-22" onclick="prevTab('diet', 'fashion')">Previous</button>
+                        <button type="button" class="button-22"  id="finish-btn">Finish</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -229,10 +241,104 @@
             $('#myTabs a[href="#' + prevTabId + '"]').tab('show');
         }
 
-        function saveData() {
-            alert('Data saved successfully!');
-            window.location.href = 'home.html';
-        }
+        // function saveData() {
+        //     alert('Data saved successfully!');
+        //     window.location.href = 'login.html';
+        // }
+
+        const finishBtn = document.getElementById('finish-btn');
+
+        finishBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            // Check if all fields are filled
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const region = document.getElementById('region').value;
+            const township = document.getElementById('township').value;
+
+            if (!username || !password || !email || !phone || !region || !township) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const userData = {
+                username: username,
+                password: password,
+                email: email,
+                phone: phone,
+                region: region,
+                township: township,
+                transport: {
+                    public: document.getElementById('public').checked,
+                    animals: document.getElementById('animals').checked,
+                    bicycle: document.getElementById('bicycle').checked,
+                    motorbike: document.getElementById('motorbike').checked,
+                    cars: document.getElementById('cars').checked,
+                    airplanes: document.getElementById('airplanes').checked,
+                    walking: document.getElementById('walking').checked,
+                },
+                energy: {
+                    electricity: document.getElementById('electricity').value,
+                    water: document.getElementById('water').value,
+                    heating: document.getElementById('heating').value,
+                    cooling: document.getElementById('cooling').value,
+                },
+                wasteManagement: {
+                    recycling: document.getElementById('recycling').checked,
+                    composting: document.getElementById('composting').checked,
+                    municipal: document.getElementById('municipal').checked,
+                },
+                energySources: {
+                    hydro: document.getElementById('hydro').checked,
+                    fossils: document.getElementById('fossils').checked,
+                    tidal: document.getElementById('tidal').checked,
+                    nuclear: document.getElementById('nuclear').checked,
+                    human: document.getElementById('human').checked,
+                    piezo: document.getElementById('piezo').checked,
+                    thermo: document.getElementById('thermo').checked,
+                    fuelcells: document.getElementById('fuelcells').checked,
+                    hybrid: document.getElementById('hybrid').checked,
+                    microgrids: document.getElementById('microgrids').checked,
+                },
+                fashion: {
+                    plasticBags: document.getElementById('plastic-bags').checked,
+                    wovenBags: document.getElementById('woven-bags').checked,
+                    fastFashion: document.getElementById('fast-fashion').checked,
+                    durableClothes: document.getElementById('durable-clothes').checked,
+                },
+                diet: {
+                    meat: document.getElementById('meat').checked,
+                    birds: document.getElementById('birds').checked,
+                    vegetables: document.getElementById('vegetables').checked,
+                    fastFood: document.getElementById('fast-food').checked,
+                    farm: document.getElementById('farm').checked,
+                    local: document.getElementById('local').checked,
+                    imported: document.getElementById('imported').checked,
+                },
+            };
+
+            try {
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userData),
+                });
+
+                if (response.ok) {
+                    alert('Data saved successfully!');
+                    window.location.href = 'login.html';
+                } else {
+                    console.error('Failed to save data:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
     </script>
 </body>
 
