@@ -129,7 +129,7 @@ form label {
     width: 100px;
     border-radius: 50%;
     background-image: url(../res/Create\ an\ image\ show\ \(1\).jpg);
-    margin-left: 520px;
+    margin-left: 20px;
     background-position: center;
     background-size: cover;
 }
@@ -399,7 +399,7 @@ form label {
         width: 100px;
         border-radius: 50%;
         background-image: url(../res/Create\ an\ image\ show\ \(1\).jpg);
-        margin-left: 130px;
+        margin-left: 10px;
         background-position: center;
         background-size: cover;
     }

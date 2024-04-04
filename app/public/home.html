@@ -31,6 +31,29 @@
             overflow-y: auto;
             max-height: calc(100vh - 2px);
             /* Adjust the max-height as needed */
+            width: 270px;
+        }
+
+        .card {
+            background-color: #212121;
+            margin: 20px;
+            border-radius: 8px;
+            width: 400px;
+            padding: 2em;
+        }
+
+        .profile-photo {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-image: url(../res/Create\ an\ image\ show\ \(1\).jpg);
+            margin-left: 140px;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .prof{
+            width: 400px;
         }
 
         @media (max-width: 1068px) {
@@ -57,7 +80,7 @@
                 /* Add padding for better appearance */
             }
 
-            #mic-gif{
+            #mic-gif {
                 display: none;
             }
         }
@@ -92,14 +115,17 @@
         </div>
         <div id="profile" class="tab-content">
             <!-- Add your profile content here -->
-            <h1>Profile</h1>
-            <div class="profile-photo">
+            <div class="prof">
+                <h1>Profile</h1>
+                <div class="profile-photo">
+                </div>
+                <div class="your-details">
+                    <h1>Louis Ochieng</h1>
+                    <h3>ELITE | 1.3K POINTS</h3>
+                </div>
+                <div class="achievements"></div>
             </div>
-            <div class="your-details">
-                <h1>Louis Ochieng</h1>
-                <h3>ELITE | 1.3K POINTS</h3>
-            </div>
-            <div class="achievements"></div>
+
         </div>
     </div>
     <script>
@@ -137,7 +163,7 @@
             // Append the mic gif to the container
             micGifContainer.appendChild(micGif);
 
-            // Set styles for micGifContainer
+            // Set styles for micGifComntainer
             micGifContainer.style.backgroundColor = 'black';
             micGifContainer.style.width = '100%';
             micGifContainer.style.backgroundSize = 'cover';
@@ -195,7 +221,7 @@
             result.style.textAlign = 'center'
         });
 
-        envDef.addEventListener("click", async (e) => {
+        envDef.addEventListener("clickm", async (e) => {
             e.preventDefault();
             // Create a new paragraph element
             answers();
@@ -285,7 +311,8 @@
                 personalInfoCard.style.width = '270px'
                 personalInfoCard.style.padding = '2em'
                 personalInfoCard.innerHTML = `
-            <h2>${user.username}</h2>
+            <h2>Personal information</h2>
+            <p>Username: ${user.username}</p>
             <p>Email: ${user.email}</p>
             <p>Phone: ${user.phone}</p>
             <p>Region: ${user.region}</p>
