@@ -35,6 +35,7 @@
             .menu-icon-div {
                 display: inline-block;
                 position: fixed;
+                cursor: pointer;
                 top: 0;
                 left: 0;
                 width: 100%;
@@ -57,7 +58,7 @@
     <div class="sidebar" id="sidebar" style="padding: 4em;">
         <a href="#" onclick="showTab('prompts')"><span class="material-icons">home</span> Home</a>
         <a href="#" onclick="showTab('profile')"><span class="material-icons">person</span> Profile</a>
-        <a href="#"><span class="material-icons">logout</span> Logout</a>
+        <a href="login.html"><span class="material-icons">logout</span> Logout</a>
     </div>
     <div class="menu-icon-div"><span class="material-symbols-outlined" class="menu-icon" id="menu-icon"
             title="Menu Icon">widgets</span></div>
@@ -78,177 +79,176 @@
                 <input type="text" id="prompt-input" placeholder="How can I help you today?">
                 <span class="material-icons" id="arrow" title="Send message to GreenFoot">arrow_circle_up</span>
             </div>
-            <div id="profile" class="tab-content">
-                <!-- Add your profile content here -->
-                <h1>Profile</h1>
-                <div class="profile-photo">
-
-                </div>
-                <div class="your-details">
-                    <h1>Louis Ochieng</h1>gin
-                    <h3>ELITE | 1.3K POINTS</h3>
-                </div>
-                <div class="achievements"></div>
-
-            </div>
         </div>
-        <script>
-            function showTab(tabId) {
-                // Hide all tabs
-                const tabs = document.querySelectorAll('.tab-content');
-                tabs.forEach(tab => tab.classList.remove('acgintive'));
+        <div id="profile" class="tab-content">
+            <!-- Add your profile content here -->
+            <h1>Profile</h1>
+            <div class="profile-photo">
+            </div>
+            <div class="your-details">
+                <h1>Louis Ochieng</h1>
+                <h3>ELITE | 1.3K POINTS</h3>
+            </div>
+            <div class="achievements"></div>
+        </div>
+    </div>
+    <script>
+        function showTab(tabId) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
 
-                // Show the selected tab
-                const selectedTab = document.getElementById(tabId);
-                selectedTab.classList.add('active');
-            }
+            // Show the selected tab
+            const selectedTab = document.getElementById(tabId);
+            selectedTab.classList.add('active');
+        }
 
-            // Initially show the 'prompts' tab
-            showTab('prompts');
+        // Initially show the 'prompts' tab
+        showTab('prompts');
 
-            function showMic() {
-                const micGifContainer = document.getElementById('mic-gif');
-                const mic = document.getElementById('mic');
-                const promptArea = document.getElementById('ginprompt-area');
-                const sampleQuestions = document.getElementById('sample-questions');
-                const responseArea = document.getElementById('response-area');
-                const profile = document.getElementById('profile');
-                const prompts = document.getElementById('prompts');
-
-                // Create a new image element
-                const micGif = new Image();
-                micGif.src = '../res/mic.gif'; // Replace with your mic gif URL
-                micGif.alt = 'Microphone Gif';
-                micGif.classList.add('my-gif'); // Replace 'my-gif' with your desired class
-
-                // Clear any previous content in micGifContainer
-                micGifContainer.innerHTML = '';
-
-                // Append the mic gif to the container
-                micGifContainer.appendChild(micGif);
-
-                // Set styles for micGifContainer
-                micGifContainer.style.backgroundColor = 'black';
-                micGifContainer.style.width = '100%';
-                micGifContainer.style.backgroundSize = 'cover';
-                micGifContainer.style.backgroundPosition = 'center';
-
-                // Center the mic gif on the page
-                micGifContainer.style.display = 'flex';
-                micGifContainer.style.justifyContent = 'center';
-                micGifContainer.style.alignItems = 'center';
-                micGifContainer.style.width = '100%';
-
-                // Set body background color to black
-                document.body.style.backgroundColor = 'black';
-
-                // Remove space above micGifContainer
-                micGifContainer.style.marginTop = '0px';
-
-                // Hide other elements
-                promptArea.style.display = 'none';
-                sampleQuestions.style.display = 'none';
-                responseArea.style.display = 'none';
-                profile.style.display = 'none';
-                prompts.style.display = 'none';
-            }
-
-            mic.addEventListener('click', async (e) => {
-                e.preventDefault();
-                showMic();
-            });
-
-            const cfDef = document.getElementById('carbon-definition');
-            const envDef = document.getElementById('env-definition');
+        function showMic() {
+            const micGifContainer = document.getElementById('mic-gif');
+            const mic = document.getElementById('mic');
             const promptArea = document.getElementById('prompt-area');
             const sampleQuestions = document.getElementById('sample-questions');
-            const result = document.getElementById('result-area');
             const responseArea = document.getElementById('response-area');
+            const profile = document.getElementById('profile');
+            const prompts = document.getElementById('prompts');
 
-            function answers() {
-                sampleQuestions.style.display = 'none';
-                responseArea.style.display = 'none';
-                result.style.fontFamily = 'sans-serif';
-                result.style.fontSize = 'larger';
-                result.style.fontWeight = 'bold';
+            // Create a new image element
+            const micGif = new Image();
+            micGif.src = '../res/mic.gif'; // Replace with your mic gif URL
+            micGif.alt = 'Microphone Gif';
+            micGif.classList.add('my-gif'); // Replace 'my-gif' with your desired class
+
+            // Clear any previous content in micGifContainer
+            micGifContainer.innerHTML = '';
+
+            // Append the mic gif to the container
+            micGifContainer.appendChild(micGif);
+
+            // Set styles for micGifContainer
+            micGifContainer.style.backgroundColor = 'black';
+            micGifContainer.style.width = '100%';
+            micGifContainer.style.backgroundSize = 'cover';
+            micGifContainer.style.backgroundPosition = 'center';
+
+            // Center the mic gif on the page
+            micGifContainer.style.display = 'flex';
+            micGifContainer.style.justifyContent = 'center';
+            micGifContainer.style.alignItems = 'center';
+            micGifContainer.style.width = '100%';
+
+            // Set body background color to black
+            document.body.style.backgroundColor = 'black';
+
+            // Remove space above micGifContainer
+            micGifContainer.style.marginTop = '0px';
+
+            // Hide other elements
+            promptArea.style.display = 'none';
+            sampleQuestions.style.display = 'none';
+            responseArea.style.display = 'none';
+            profile.style.display = 'none';
+            prompts.style.display = 'none';
+        }
+
+        mic.addEventListener('click', async (e) => {
+            e.preventDefault();
+            showMic();
+        });
+
+        const cfDef = document.getElementById('carbon-definition');
+        const envDef = document.getElementById('env-definition');
+        const promptArea = document.getElementById('prompt-area');
+        const sampleQuestions = document.getElementById('sample-questions');
+        const result = document.getElementById('result-area');
+        const responseArea = document.getElementById('response-area');
+
+        function answers() {
+            sampleQuestions.style.display = 'none';
+            responseArea.style.display = 'none';
+            result.style.fontFamily = 'sans-serif';
+            result.style.fontSize = 'larger';
+            result.style.fontWeight = 'bold';
+        }
+
+        cfDef.addEventListener("click", async (e) => {
+            e.preventDefault();
+            answers();
+            // Create a new paragraph element
+            const cfParagraph = document.createElement('p');
+            // Set the text content for the paragraph
+            cfParagraph.textContent = "Definition of Carbon Footprint: Carbon footprint is the total amount of greenhouse gases, specifically carbon dioxide, and other carbon compounds emitted directly or indirectly by human activities.";
+            // Append the paragraph to the result area
+            result.appendChild(cfParagraph);
+            result.style.textAlign = 'center'
+        });
+
+        envDef.addEventListener("click", async (e) => {
+            e.preventDefault();
+            // Create a new paragraph element
+            answers();
+            const envParagraph = document.createElement('p');
+            envParagraph.style.alignContent = 'center';
+            // Set the text content for the paragraph
+            envParagraph.textContent = "Definition of Environment: The environment refers to the surroundings in which organisms live, grow, and interact. It includes both living (biotic) and non-living (abiotic) components, such as air, water, soil, and ecosystems.";
+            // Append the paragraph to the result area
+            result.appendChild(envParagraph);
+            result.style.textAlign = 'center'
+        });
+
+        // ChatGpt stuff
+
+        const arrowIcon = document.getElementById('arrow');
+        const promptInput = document.getElementById('prompt-input');
+        const resultArea = document.getElementById('result-area');
+
+        arrowIcon.addEventListener('click', async () => {
+            const userQuery = promptInput.value.trim();
+
+            // Check if the user entered a valid query
+            if (userQuery) {
+                // Reset result area
+                resultArea.innerHTML = '';
+
+                // Call a function to send the query to ChatGPT and handle the response
+                await sendToChatGPT(userQuery);
+            } else {
+                // Handle case when the input is empty
+                alert('Please enter a valid query.');
             }
-
-            cfDef.addEventListener("click", async (e) => {
-                e.preventDefault();
-                answers();
-                // Create a new paragraph element
-                const cfParagraph = document.createElement('p');
-                // Set the text content for the paragraph
-                cfParagraph.textContent = "Definition of Carbon Footprint: Carbon footprint is the total amount of greenhouse gases, specifically carbon dioxide, and other carbon compounds emitted directly or indirectly by human activities.";
-                // Append the paragraph to the result area
-                result.appendChild(cfParagraph);
-                result.style.textAlign = 'center'
-            });
-
-            envDef.addEventListener("click", async (e) => {
-                e.preventDefault();
-                // Create a new paragraph element
-                answers();
-                const envParagraph = document.createElement('p');
-                envParagraph.style.alignContent = 'center';
-                // Set the text content for the paragraph
-                envParagraph.textContent = "Definition of Environment: The environment refers to the surroundings in which organisms live, grow, and interact. It includes both living (biotic) and non-living (abiotic) components, such as air, water, soil, and ecosystems.";
-                // Append the paragraph to the result area
-                result.appendChild(envParagraph);
-                result.style.textAlign = 'center'
-            });
-
-            // ChatGpt stuff
-
-            const arrowIcon = document.getElementById('arrow');
-            const promptInput = document.getElementById('prompt-input');
-            const resultArea = document.getElementById('result-area');
-
-            arrowIcon.addEventListener('click', async () => {
-                const userQuery = promptInput.value.trim();
-
-                // Check if the user entered a valid query
-                if (userQuery) {
-                    // Reset result area
-                    resultArea.innerHTML = '';
-
-                    // Call a function to send the query to ChatGPT and handle the response
-                    await sendToChatGPT(userQuery);
-                } else {
-                    // Handle case when the input is empty
-                    alert('Please enter a valid query.');
-                }
-            });
+        });
 
 
 
-            function displayChatGPTResponse(response) {
-                // Display the response in the result area
-                const responseParagraph = document.createElement('p');
-                responseParagraph.textContent = response;
-                resultArea.appendChild(responseParagraph);
-                resultArea.style.textAlign = 'center';
+        function displayChatGPTResponse(response) {
+            // Display the response in the result area
+            const responseParagraph = document.createElement('p');
+            responseParagraph.textContent = response;
+            resultArea.appendChild(responseParagraph);
+            resultArea.style.textAlign = 'center';
+        }
+
+        const menuIcon = document.getElementById('menu-icon');
+        const sideBar = document.getElementById('sidebar');
+
+        let isSideBarOpen = false;
+
+        menuIcon.addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (!isSideBarOpen) {
+                sideBar.style.display = 'block';
+                sideBar.style.zIndex = '1000';
+                isSideBarOpen = true;
+            } else {
+                sideBar.style.display = 'none';
+                isSideBarOpen = false;
             }
-
-            const menuIcon = document.getElementById('menu-icon');
-            const sideBar = document.getElementById('sidebar');
-
-            let isSideBarOpen = false;
-
-            menuIcon.addEventListener('click', async (e) => {
-                e.preventDefault();
-                if (!isSideBarOpen) {
-                    sideBar.style.display = 'block';
-                    sideBar.style.zIndex = '1000';
-                    isSideBarOpen = true;
-                } else {
-                    sideBar.style.display = 'none';
-                    isSideBarOpen = false;
-                }
-            });
+        });
 
 
-        </script>
+    </script>
 </body>
 
 </html>
